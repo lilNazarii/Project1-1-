@@ -75,13 +75,45 @@ def show_availability(arr0, arr1, arr2):
         print("There is no availability in this language.")
 
 
+def book_place(arr0, arr1, arr2):
+    student_name = input("Enter student name: ")
+    student_id = input("Enter student id: ")
+    language = input("Enter language: ")
+    level = input("Enter level: ")
+
+    for i in range(len(arr0)):
+        if arr0[i].lower() == language.lower() and arr1[i] == level:
+            if arr2[i] < 20:
+                arr2[i] = arr2[i] + 1
+                save_data(arr0, arr1, arr2)
+
+                file_name = f"{arr0[i]}_{arr1[i]}_{student_id}.txt"
+
+                with open(file_name, "w") as file:
+                    file.write("Booking Invoice\n")
+                    file.write(f"Student Name: {student_name}\n")
+                    file.write(f"Student ID: {student_id}\n")
+                    file.write(f"Language: {arr0[i]}\n")
+                    file.write(f"Level: {arr1[i]}\n")
+                    file.write("Amount Owed: 200 Euros\n")
+
+                print("Booking successful.")
+                print(f"Invoice file created: {file_name}")
+                return
+            else:
+                print("There is no class available.")
+                return
+
+    print("There is no class available.")
+
+
 def show_menu(arr0, arr1, arr2):
     while True:
         print()
         print("1. Show languages")
         print("2. Show levels")
         print("3. Show Availability")
-        print("4. X")
+        print("4. Book a place")
         print("5. X")
         print("6. X")
         print("7. Exit")
@@ -102,6 +134,9 @@ def show_menu(arr0, arr1, arr2):
 
         elif choice == 3:
             show_availability(arr0, arr1, arr2)
+
+        elif choice == 4:
+            book_place(arr0, arr1, arr2)
 
         elif choice == 7:
             save_data(arr0, arr1, arr2)
