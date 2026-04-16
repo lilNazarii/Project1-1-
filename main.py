@@ -33,6 +33,26 @@ def show_languages(arr0, arr1):
             print()
 
 
+def show_levels(arr0, arr1):
+    language = input("Choose the subject: ")
+
+    found = False
+
+    print("=" * 15)
+    print(f"Levels of {language}:")
+    print("-" * 15)
+
+    for i in range(len(arr0)):
+        if arr0[i].lower() == language.lower():
+            print(arr1[i])
+            found = True
+
+    print("=" * 15)
+
+    if found == False:
+        print("Unknown language")
+
+
 def show_menu(arr0, arr1, arr2):
     while True:
         print()
@@ -54,10 +74,15 @@ def show_menu(arr0, arr1, arr2):
 
         if choice == 1:
             show_languages(arr0, arr1)
+
+        elif choice == 2:
+            show_levels(arr0, arr1)
+
         elif choice == 7:
             save_data(arr0, arr1, arr2)
             print("Data saved. Goodbye.")
             break
+
         else:
             print("Option not added yet.")
 
