@@ -53,6 +53,28 @@ def show_levels(arr0, arr1):
         print("Unknown language")
 
 
+def show_availability(arr0, arr1, arr2):
+    language = input("Enter language: ")
+
+    found = False
+    available = False
+
+    for i in range(len(arr0)):
+        if arr0[i].lower() == language.lower():
+            found = True
+
+            if arr2[i] < 20:
+                if available == False:
+                    print("Currently there is space in:")
+                print(f"{arr0[i]} Level {arr1[i]}")
+                available = True
+
+    if found == False:
+        print("There are currently no classes in this language.")
+    elif available == False:
+        print("There is no availability in this language.")
+
+
 def show_menu(arr0, arr1, arr2):
     while True:
         print()
@@ -77,6 +99,9 @@ def show_menu(arr0, arr1, arr2):
 
         elif choice == 2:
             show_levels(arr0, arr1)
+
+        elif choice == 3:
+            show_availability(arr0, arr1, arr2)
 
         elif choice == 7:
             save_data(arr0, arr1, arr2)
