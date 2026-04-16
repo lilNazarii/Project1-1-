@@ -19,6 +19,20 @@ def save_data(arr0, arr1, arr2):
             file.write(f"{arr0[i]},{arr1[i]},{arr2[i]}\n")
 
 
+def show_languages(arr0, arr1):
+    used_languages = []
+
+    for i in range(len(arr0)):
+        if arr0[i] not in used_languages:
+            used_languages.append(arr0[i])
+
+            print(f"{arr0[i]} Levels:", end=" ")
+            for j in range(len(arr0)):
+                if arr0[j] == arr0[i]:
+                    print(arr1[j], end=" ")
+            print()
+
+
 def show_menu(arr0, arr1, arr2):
     while True:
         print()
@@ -38,7 +52,9 @@ def show_menu(arr0, arr1, arr2):
             print("Error")
             continue
 
-        if choice == 7:
+        if choice == 1:
+            show_languages(arr0, arr1)
+        elif choice == 7:
             save_data(arr0, arr1, arr2)
             print("Data saved. Goodbye.")
             break
